@@ -1,0 +1,40 @@
+{
+  "name": "vite-plugin-jump-editor",
+  "version": "1.0.0",
+  "author": "Li Ming Yang",
+  "description": "点击页面dom元素跳转编辑器代码所在位置",
+  "license": "MIT",
+  "keywords": [
+    "jump",
+    "editor",
+    "jumpEditor",
+    "vite-plugin",
+    "vue",
+    "vite"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "lint": "eslint --fix --ext .js,.ts,.vue ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmy1342554547/vite-plugin-jump-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lmy1342554547/vite-plugin-jump-editor/issues"
+  },
+  "homepage": "https://github.com/lmy1342554547/vite-plugin-jump-editor#readme",
+  "peerDependencies": {
+    "vite": "^2.0.0"
+  }
+}
