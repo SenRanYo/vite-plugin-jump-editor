@@ -8,7 +8,7 @@
 // 具体配置可以参考 https://prettier.io/docs/en/options.html
 
 module.exports = {
-	printWidth: 120, // 执行换行的长度
+	printWidth: 150, // 执行换行的长度
 	tabWidth: 2, // 指定每个缩进的空格数
 	useTabs: true, // 缩进是否使用tab
 	semi: true, // 在每个语句的末尾添加一个分号

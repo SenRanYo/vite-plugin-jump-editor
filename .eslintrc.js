@@ -22,13 +22,9 @@ module.exports = {
 			tsx: true,
 		},
 	},
-	extends: [
-		"prettier",
-		"plugin:vue/vue3-recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:prettier/recommended",
-	],
+	extends: ["prettier", "plugin:vue/vue3-recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
 	rules: {
 		"vue/multi-word-component-names": "off",
+		"prettier/prettier": ["error", { printWidth: 150 }],
 	},
 };
