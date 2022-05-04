@@ -1,24 +1,14 @@
-/*
- * @Author: Li Ming Yang
- * @Date: 2022-04-28 21:17:41
- * @Description: 中间件
- * @LastEditors: Li Ming Yang
- */
-
 import type { Connect } from "vite";
 import { launchEditor } from "../editor";
 export const SERVER_URL = "/__open-stack-frame-in-editor";
 
 type RequestMessage = Parameters<Connect.NextHandleFunction>[0];
-export const queryParserMiddleware: Connect.NextHandleFunction = (
-	req: RequestMessage & { query?: object },
-	_,
-	next,
-) => {
+export const queryParserMiddleware: Connect.NextHandleFunction = (req: RequestMessage & { query?: object }, _, next) => {
 	if (!req.query && req.url?.startsWith(SERVER_URL)) {
 		const url = new URL(req.url, "http://domain.inspector");
 		req.query = Object.fromEntries(url.searchParams.entries());
 	}
+
 	next();
 };
 
@@ -37,6 +27,7 @@ export const launchEditorMiddleware: Connect.NextHandleFunction = (
 		}
 		const lineNumber = +line || 1;
 		const columnNumber = +column || 1;
+
 		launchEditor(file, lineNumber, columnNumber);
 		res.end();
 	} else {

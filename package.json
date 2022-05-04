@@ -24,7 +24,7 @@
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"scripts": {
-		"dev:link": "npm link",
+		"dev:link": "npm link && cd ./example && npm link vite-plugin-jump-editor",
 		"dev:watch": "onchange -i \"src/**/*.ts\" -- npm run build",
 		"dev:example": "cd ./example && npm run dev",
 		"lint": "eslint --fix --ext .js,.ts,.vue .",
@@ -47,7 +47,7 @@
 		"@babel/plugin-transform-typescript": "^7.16.8",
 		"@vue/babel-plugin-jsx": "^1.1.1",
 		"@vue/compiler-dom": "^3.2.33",
-		"chalk": "^5.0.1",
+		"chalk": "4.1.2",
 		"magic-string": "^0.26.1",
 		"shell-quote": "^1.7.3"
 	},

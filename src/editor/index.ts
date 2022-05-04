@@ -33,12 +33,9 @@ const COMMON_EDITORS_OSX = {
 	"/Applications/Atom.app/Contents/MacOS/Atom": "atom",
 	"/Applications/Atom Beta.app/Contents/MacOS/Atom Beta": "/Applications/Atom Beta.app/Contents/MacOS/Atom Beta",
 	"/Applications/Brackets.app/Contents/MacOS/Brackets": "brackets",
-	"/Applications/Sublime Text.app/Contents/MacOS/Sublime Text":
-		"/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl",
-	"/Applications/Sublime Text Dev.app/Contents/MacOS/Sublime Text":
-		"/Applications/Sublime Text Dev.app/Contents/SharedSupport/bin/subl",
-	"/Applications/Sublime Text 2.app/Contents/MacOS/Sublime Text 2":
-		"/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl",
+	"/Applications/Sublime Text.app/Contents/MacOS/Sublime Text": "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl",
+	"/Applications/Sublime Text Dev.app/Contents/MacOS/Sublime Text": "/Applications/Sublime Text Dev.app/Contents/SharedSupport/bin/subl",
+	"/Applications/Sublime Text 2.app/Contents/MacOS/Sublime Text 2": "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl",
 	"/Applications/Visual Studio Code.app/Contents/MacOS/Electron": "code",
 	"/Applications/Visual Studio Code - Insiders.app/Contents/MacOS/Electron": "code-insiders",
 	"/Applications/VSCodium.app/Contents/MacOS/Electron": "vscodium",
@@ -112,13 +109,7 @@ function addWorkspaceToArgumentsIfExists(args, workspace) {
 	return args;
 }
 
-function getArgumentsForLineNumber(
-	editor: string,
-	fileName: string,
-	lineNumber: number,
-	colNumber: number,
-	workspace: string,
-) {
+function getArgumentsForLineNumber(editor: string, fileName: string, lineNumber: number, colNumber: number, workspace: string) {
 	const editorBasename = path.basename(editor).replace(/\.(exe|cmd|bat)$/i, "");
 	switch (editorBasename) {
 		case "atom":
@@ -196,9 +187,7 @@ function guessEditor() {
 		} else if (process.platform === "win32") {
 			// Some processes need elevated rights to get its executable path.
 			// Just filter them out upfront. This also saves 10-20ms on the command.
-			const output = child_process
-				.execSync('wmic process where "executablepath is not null" get executablepath')
-				.toString();
+			const output = child_process.execSync('wmic process where "executablepath is not null" get executablepath').toString();
 			const runningProcesses = output.split("\r\n");
 			for (let i = 0; i < runningProcesses.length; i++) {
 				const processPath = runningProcesses[i].trim();
@@ -239,8 +228,7 @@ function printInstructions(fileName, errorMessage) {
 	console.log(
 		`To set up the editor integration, add something like ${chalk.cyan("VUE_EDITOR=atom")} to the ${chalk.green(
 			".env.local",
-		)} file in your project folder ` +
-			`and restart the development server. Learn more: ${chalk.green("https://goo.gl/MMTaZt")}`,
+		)} file in your project folder ` + `and restart the development server. Learn more: ${chalk.green("https://goo.gl/MMTaZt")}`,
 	);
 	console.log();
 }
